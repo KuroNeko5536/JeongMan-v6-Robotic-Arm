@@ -1,6 +1,6 @@
 # JeongMan v6 Robotic-Arm
 
-A 6-axis robotic arm project developed for the annual academic festival at **Kyungbock High School**. This project covers everything from 3D CAD design and simulation to hardware implementation using an ESP32 and NEMA 23 stepper motors, enhanced by a PyTorch-based neural network for Inverse Kinematics solving.
+A 6-axis robotic arm project developed for the annual academic festival at **Kyungbock High School**. This project covers everything from 3D CAD design and simulation to hardware implementation using an ESP32 and NEMA 23 stepper motors, enhanced by a PyTorch-based neural network and Jacobian-based numerical solvers for Inverse Kinematics.
 
 ---
 
@@ -9,7 +9,7 @@ A 6-axis robotic arm project developed for the annual academic festival at **Kyu
 - **Institution**: Kyungbock High School
 - **Event**: 2026 Academic Festival
 - **Project Name**: jeongman v6 robot arm
-- **Core Focus**: Integrating deep learning-based inverse kinematics with robust hardware using ESP32, NEMA 23 motors, and precise 3D-printed/CAD-designed structures.
+- **Core Focus**: Integrating deep learning-based and mathematical numerical inverse kinematics with robust hardware using ESP32, NEMA 23 motors, and precise 3D-printed/CAD-designed structures.
 
 ---
 
@@ -29,12 +29,30 @@ We utilized **Python** to calculate the forward kinematics and visualize the rob
 ![Workspace Analysis](assets/reachable.png)
 _Figure 2: Simulated 3D workspace and coordinate reachability_
 
-### 3. Deep Learning-Based Inverse Kinematics (PyTorch)
+### 3. Inverse Kinematics (IK) Solvers
 
-Instead of traditional geometric calculations, a **PyTorch-based neural network** was trained to predict accurate joint angles ($\theta_0 \sim \theta_4$) for given target coordinates $(X, Y, Z)$. This approach allows for fast, real-time trajectory planning.
+To find the precise joint angles ($\theta_0 \sim \theta_4$) required to reach target coordinates $(X, Y, Z)$, this project implements and evaluates two distinct approaches:
+
+#### A. Deep Learning-Based Approach (PyTorch)
+
+A **PyTorch-based neural network** was trained to predict accurate joint angles. This approach bypasses complex geometric calculations, allowing for fast, real-time trajectory planning.
 
 ![Inverse Kinematics Training](assets/prediction.png)
-_Figure 3: Result of inverse kinematics prediction_
+_Figure 3: Result of inverse kinematics prediction using Neural Network_
+
+#### B. Differential Kinematics Approach (Jacobian Matrix)
+
+To complement the neural network, we developed a mathematical solver using the **Jacobian matrix**. By calculating the linear and angular velocity relationships of the joints, this iterative numerical method solves the inverse kinematics with high geometric precision.
+
+![Jacobian Calculation](assets/jacobian.png)
+_Figure 4: Kinematics optimization and path tracking via Jacobian matrix_
+
+### 4. Performance Comparison (NN vs. Jacobian)
+
+We conducted a comparative analysis between the PyTorch Neural Network and the Jacobian-based numerical solver. While the **Neural Network** offers ultra-fast inference times suitable for dynamic environments, the **Jacobian solver** provides superior accuracy with minimal coordinate error, presenting a clear trade-off between computational speed and precision.
+
+![Performance Comparison](assets/compare.png)
+_Figure 5: Comparative analysis of accuracy and convergence between NN and Jacobian methods_
 
 ---
 
@@ -43,7 +61,7 @@ _Figure 3: Result of inverse kinematics prediction_
 ### Software & AI
 
 - **CAD & Modeling**: Autodesk Fusion 360
-- **AI & Kinematics**: Python, PyTorch
+- **AI & Kinematics**: Python, PyTorch, NumPy (Jacobian Solver)
 
 ### Hardware & Electronics
 
