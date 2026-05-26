@@ -1,6 +1,6 @@
 # JeongMan v6 Robotic-Arm
 
-A 6-axis robotic arm project developed for the annual academic festival at **Kyungbock High School**. This project covers everything from 3D CAD design and simulation to hardware implementation using an ESP32 and NEMA 23 stepper motors, enhanced by a PyTorch-based neural network and Jacobian-based numerical solvers for Inverse Kinematics.
+A 5dof robotic arm project developed for the annual academic festival at **Kyungbock High School**. This project covers everything from 3D CAD design and simulation to hardware implementation using an ESP32 and NEMA 23 stepper motors, enhanced by a PyTorch-based neural network and Jacobian-based numerical solvers for Inverse Kinematics.
 
 ---
 
@@ -35,7 +35,7 @@ To find the precise joint angles ($\theta_0 \sim \theta_4$) required to reach ta
 
 #### A. Deep Learning-Based Approach (PyTorch)
 
-A **PyTorch-based neural network** was trained to predict accurate joint angles. This approach bypasses complex geometric calculations, allowing for fast, real-time trajectory planning.
+A **PyTorch-based neural network** was trained to predict accurate joint angles. This approach bypasses complex geometric calculations, ~~allowing for fast, real-time trajectory planning.~~
 
 ![Inverse Kinematics Training](assets/prediction.png)
 _Figure 3: Result of inverse kinematics prediction using Neural Network_
@@ -49,7 +49,7 @@ _Figure 4: Kinematics optimization and path tracking via Jacobian matrix_
 
 ### 4. Performance Comparison (NN vs. Jacobian)
 
-We conducted a comparative analysis between the PyTorch Neural Network and the Jacobian-based numerical solver. While the **Neural Network** offers ultra-fast inference times suitable for dynamic environments, the **Jacobian solver** provides superior accuracy with minimal coordinate error, presenting a clear trade-off between computational speed and precision.
+We conducted a comparative analysis between the Neural Network and the Jacobian-based numerical solver. While the **Neural Network** ~~offers ultra-fast inference times suitable for dynamic environments~~, the **Jacobian solver** provides superior accuracy with minimal coordinate error, presenting a clear trade-off between computational speed and precision.
 
 ![Performance Comparison](assets/compare.png)
 _Figure 5: Comparative analysis of accuracy and convergence between NN and Jacobian methods_
