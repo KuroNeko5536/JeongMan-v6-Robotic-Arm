@@ -1,8 +1,11 @@
-# JeongMan v6 Robotic-Arm
+# JeongMan v6 Robotic-Arm ( Finished )
 
 A 5dof robotic arm project developed for the annual academic festival at **Kyungbock High School**. This project covers everything from 3D CAD design and simulation to hardware implementation using an ESP32 and NEMA 23 stepper motors, enhanced by a PyTorch-based neural network and Jacobian-based numerical solvers for Inverse Kinematics.
 
 ---
+
+## Final Product
+![real_product](assets/스크린샷%202026-07-12%20231443.png)
 
 ## Project Overview
 
